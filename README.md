@@ -1,3 +1,3 @@
-##### Battleship
+Battleship
 
-#####2 Player web based battleship game
+2 Player web based battleship game
