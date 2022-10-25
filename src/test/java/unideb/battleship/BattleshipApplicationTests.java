@@ -11,7 +11,7 @@ class BattleshipApplicationTests {
     }
 
     @Test
-    void testCase3() {
+    void testCase2() {
 
     }
 
