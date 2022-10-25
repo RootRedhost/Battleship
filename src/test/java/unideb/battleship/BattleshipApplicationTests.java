@@ -10,4 +10,9 @@ class BattleshipApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    void testCase3() {
+
+    }
+
 }
