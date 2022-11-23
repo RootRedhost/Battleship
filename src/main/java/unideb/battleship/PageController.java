@@ -1,48 +1,33 @@
 package unideb.battleship;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import unideb.battleship.game.GameState;
+import unideb.battleship.service.GameStateService;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 public class PageController {
 
-    public List<Player> playerList = List.of();
+    @Autowired
+    private GameStateService gameStateService;
 
-    /*@RequestMapping("/allPlayers")
-    private String allPlayers(Model model){
-        model.addAttribute("player_result", playerService.listAllPlayers());
-        return "player_result";
-    }*/
-
-    @GetMapping("/greeting")
-    public String greetingForm(Model model) {
-        model.addAttribute("greeting", new Greeting());
-        return "greeting";
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String sayHello(){
+        return "Hello";
     }
 
-    @PostMapping("/greeting")
-    public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-        model.addAttribute("greeting", greeting);
-        return "greeting_result";
+    @RequestMapping(value = "/showMap", method = RequestMethod.GET)
+    public ArrayList<GameState> showMap(){
+        return gameStateService.getGameStates();
     }
 
-    @GetMapping("/createPlayer")
-    public String newPlayerForm(Model model) {
-        model.addAttribute("player", new Player());//FONTOS
-        return "player";
-    }
-
-    @PostMapping("/createPlayer")
-    public String createPlayer(@ModelAttribute Player player, Model model){
-        model.addAttribute("player", player);
-        playerList.add(player);
-        for(Player p : playerList)
-            System.out.println(p);
-        return "player_result";
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ArrayList<String> test(){
+        return gameStateService.getStrings();
     }
 }
