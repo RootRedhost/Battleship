@@ -1,14 +1,11 @@
 package unideb.battleship;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import unideb.battleship.game.GameState;
 import unideb.battleship.service.GameStateService;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 public class PageController {
@@ -21,10 +18,22 @@ public class PageController {
         return "Hello";
     }
 
-    @RequestMapping(value = "/showMap", method = RequestMethod.GET)
-    public ArrayList<GameState> showMap(){
-        return gameStateService.getGameStates();
+    @RequestMapping(value = "/showMaps", method = RequestMethod.GET)
+    public ArrayList<GameState> showMapAll(){
+        return gameStateService.getAllGameStates();
     }
+
+    @RequestMapping(value = "/showMaps/{id}", method = RequestMethod.GET)
+    public GameState showMap(@PathVariable String id){
+        return gameStateService.getGameState(id);
+    }
+
+    /*@RequestMapping(value = "/makeAMove", method = RequestMethod.POST){
+        public ArrayList<GameState> makeAMove(){
+
+            return
+        }
+    }*/
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ArrayList<String> test(){

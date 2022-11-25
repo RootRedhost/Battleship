@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  */
 public class Tile {
     public enum tileTypes {
-        WATER, SHOT, WRECK
+        WATER, SHOT, WRECK, HIDDENSHIP
     }
     private tileTypes tileType;
 

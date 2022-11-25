@@ -4,18 +4,21 @@ import org.springframework.stereotype.Service;
 import unideb.battleship.game.GameState;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Service
 public class GameStateService {
+
     private ArrayList<GameState> gameStates = new ArrayList<>();
     private ArrayList<String> stringList = new ArrayList<>();
 
-    public ArrayList<GameState> getGameStates(){
-        gameStates.add(new GameState("player 1 jóska", "player 2 pista"));
+    public ArrayList<GameState> getAllGameStates(){
+        gameStates.add(new GameState("player 1 jóska", "player 2 pista", "12345"));
         return gameStates;
 
+    }
+
+    public GameState getGameState(String id){
+        return gameStates.stream().filter(gt -> gt.getId().equals(id)).findFirst().get();
     }
 
     public ArrayList<String> getStrings(){
@@ -25,5 +28,6 @@ public class GameStateService {
         return stringList;
     }
 
+    public GameState move
 
 }

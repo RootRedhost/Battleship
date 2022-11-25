@@ -1,18 +1,27 @@
 package unideb.battleship.game;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class representing one player's grid
  */
 public class GameGrid {
 
-    private ArrayList<Tile> grid = new ArrayList<>();
-    private String owner;
+    public enum Letters{
+        A, B, C, D, E, F, G, H, I, J
+    }
 
-    public ArrayList<Tile> getGrid() {
-        return grid;
+    private ArrayList<Tile> gridPublic = new ArrayList<>();
+    private ArrayList<Tile> gridPrivate = new ArrayList<>();
+    private String owner;
+    final static public int armadaMax = 20;
+
+    public ArrayList<Tile> getGridPrivate() {
+        return gridPrivate;
+    }
+
+    public ArrayList<Tile> getGridPublic() {
+        return gridPublic;
     }
 
     public String getOwner() {
@@ -22,7 +31,18 @@ public class GameGrid {
     public GameGrid(String owner) {
         this.owner = owner;
         for(int i = 0; i < 100;i++){
-            this.grid.add(new Tile());
+            this.gridPublic.add(new Tile());
+            this.gridPrivate.add(new Tile());
         }
+    }
+
+    public Integer numberOfWrecks(){
+        int n = 0;
+        for(int i = 0; i < 100; i++){
+            if(getGridPrivate().get(i).getTileType().equals(Tile.tileTypes.WRECK)){
+                n++;
+            }
+        }
+        return n;
     }
 }
