@@ -1,5 +1,8 @@
 package unideb.battleship.requests;
 
+/**
+ * Converts join requests to POJO
+ */
 public class JoinRequest {
     private final String name;
     private final String gameid;

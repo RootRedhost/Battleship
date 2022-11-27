@@ -16,6 +16,10 @@ public class GameState {
     private GameGrid player1GameGrid;
     private GameGrid player2GameGrid;
     private int p1ShipsLeft;
+    private int p2ShipsLeft;
+    private String id;
+    private WhoWon whoWon;
+    private WhoWon nextPlayer;
 
     public int getP1ShipsLeft() {
         return p1ShipsLeft;
@@ -32,11 +36,6 @@ public class GameState {
     public void setP2ShipsLeft(int p2ShipsLeft) {
         this.p2ShipsLeft = p2ShipsLeft;
     }
-
-    private int p2ShipsLeft;
-    private String id;
-    private WhoWon whoWon;
-    private WhoWon nextPlayer;
 
     public void setId(String id) {
         this.id = id;
@@ -73,7 +72,7 @@ public class GameState {
     }
 
     public GameState move(String player, String actionPos){
-        if(whoWon.equals(WhoWon.NONE)){
+        if(getWhoWon().equals(WhoWon.NONE)){
             if(player.equals(player1GameGrid.getOwner()) && nextPlayer.equals(WhoWon.PLAYER1)){
                 this.moveLogic(player,actionPos);
                 nextPlayer = WhoWon.PLAYER2;
@@ -83,10 +82,10 @@ public class GameState {
                 nextPlayer = WhoWon.PLAYER1;
             }
         }
-        if(p1ShipsLeft <= 0){
+        if(getP1ShipsLeft() <= 0){
             setWhoWon(WhoWon.PLAYER2);
         }
-        else if(p2ShipsLeft <= 0){
+        else if(getP2ShipsLeft() <= 0){
             setWhoWon(WhoWon.PLAYER1);
         }
         return this;
@@ -128,7 +127,5 @@ public class GameState {
                 break;
         }
     }
-
-
 
 }

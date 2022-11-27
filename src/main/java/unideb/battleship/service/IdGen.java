@@ -1,7 +1,5 @@
 package unideb.battleship.service;
 
-import unideb.battleship.service.GameStateService;
-
 import java.util.Random;
 
 public class IdGen {

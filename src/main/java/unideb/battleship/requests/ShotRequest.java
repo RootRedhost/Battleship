@@ -1,5 +1,8 @@
 package unideb.battleship.requests;
 
+/**
+ * Converts shot requests to POJO
+ */
 public class ShotRequest {
     private final String gameId;
     private final String actingPlayer;

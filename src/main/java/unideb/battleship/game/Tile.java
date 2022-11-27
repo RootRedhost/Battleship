@@ -1,14 +1,11 @@
 package unideb.battleship.game;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 /**
  * Class representing the tiles of the grid
  */
 public class Tile {
     public enum tileTypes {
-        WATER, SHOT, WRECK, HIDDENSHIP
+        WATER, SHOT, WRECK
     }
     private tileTypes tileType;
 
@@ -24,6 +21,4 @@ public class Tile {
         this.tileType = tileTypes.WATER;
     }
 
-
-//TODO annotations and constuctors for the Tile class
 }

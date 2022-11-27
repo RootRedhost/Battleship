@@ -1,6 +1,5 @@
 package unideb.battleship;
 
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -9,9 +8,11 @@ import unideb.battleship.game.HiddenShipPositions;
 import unideb.battleship.requests.JoinRequest;
 import unideb.battleship.requests.ShotRequest;
 import unideb.battleship.service.GameStateService;
-
 import java.util.ArrayList;
 
+/**
+ * Provides REST API the front-end can connect to
+ */
 @RestController
 public class PageController {
 
@@ -28,12 +29,6 @@ public class PageController {
         return gameStateService.getGameState(id);
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ArrayList<String> test(){
-        return gameStateService.getStrings();
-    }
-
-    //@ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/createGame", method = RequestMethod.POST)
     public String createGame(@RequestBody String player1Name){
         return gameStateService.crateGame(player1Name);
@@ -53,8 +48,6 @@ public class PageController {
 
     @RequestMapping(value = "/makeAMove", method = RequestMethod.POST)
     public GameState makeAMove(@RequestBody ShotRequest shotRequest){
-
-        //return shotRequest.getActingPlayer() + " " + shotRequest.getActionPos();
         return gameStateService.move(shotRequest);
     }
 }

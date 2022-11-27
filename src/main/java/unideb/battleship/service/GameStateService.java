@@ -8,16 +8,15 @@ import unideb.battleship.game.GameState;
 
 import java.util.ArrayList;
 
+/**
+ * Service class that connects the REST APIs and the GameState class
+ */
 @Service
 public class GameStateService {
 
     private static ArrayList<GameState> gameStates = new ArrayList<>();
     private ArrayList<String> stringList = new ArrayList<>();
     private static ArrayList<HiddenShipPositions> hiddenShipPositionsArrayList = new ArrayList<>();
-
-    public static Integer numberOfWrecksIn(String gameId, String playerName){
-        return getHSPIn(gameId, playerName).getPositions().size();
-    }
 
     public static HiddenShipPositions getHSPIn(String gameId, String playerName){
         HiddenShipPositions hsp = null;
@@ -36,13 +35,6 @@ public class GameStateService {
 
     public GameState getGameState(String id){
         return gameStates.stream().filter(gt -> gt.getId().equals(id)).findFirst().get();
-    }
-
-    public ArrayList<String> getStrings(){
-        stringList.add("Ein");
-        stringList.add("Zwei");
-        stringList.add("Polizei");
-        return stringList;
     }
 
     public GameState move(ShotRequest shotRequest){
