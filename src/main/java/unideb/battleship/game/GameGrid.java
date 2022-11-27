@@ -1,5 +1,7 @@
 package unideb.battleship.game;
 
+import unideb.battleship.service.GameStateService;
+
 import java.util.ArrayList;
 
 /**
@@ -12,13 +14,18 @@ public class GameGrid {
     }
 
     private ArrayList<Tile> gridPublic = new ArrayList<>();
-    private ArrayList<Tile> gridPrivate = new ArrayList<>();
+    //private ArrayList<Tile> gridPrivate = new ArrayList<>();
     private String owner;
-    final static public int armadaMax = 20;
 
-    public ArrayList<Tile> getGridPrivate() {
-        return gridPrivate;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
+
+    final static public int armadaMax = 16;
+
+    /*public ArrayList<Tile> getGridPrivate() {
+        return gridPrivate;
+    }*/
 
     public ArrayList<Tile> getGridPublic() {
         return gridPublic;
@@ -28,15 +35,14 @@ public class GameGrid {
         return owner;
     }
 
-    public GameGrid(String owner) {
-        this.owner = owner;
+    public GameGrid() {
         for(int i = 0; i < 100;i++){
             this.gridPublic.add(new Tile());
-            this.gridPrivate.add(new Tile());
+            //this.gridPrivate.add(new Tile());
         }
     }
 
-    public Integer numberOfWrecks(){
+    /*public Integer numberOfWrecks(){
         int n = 0;
         for(int i = 0; i < 100; i++){
             if(getGridPrivate().get(i).getTileType().equals(Tile.tileTypes.WRECK)){
@@ -44,5 +50,12 @@ public class GameGrid {
             }
         }
         return n;
+        return GameStateService
+    }*/
+
+    public void initPrivateGrid(){
+        for(int i = 0; i < 100; i++){
+            //TODO initPrivateGrid
+        }
     }
 }
