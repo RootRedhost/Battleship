@@ -1,3 +1,8 @@
+
+Battleship
+
+2 Player web based battleship game
+
 # Battleship
 This is a classical 2 player battleship project web based implementation made for the University of Debrecen, Software Engineering Methods.
 
